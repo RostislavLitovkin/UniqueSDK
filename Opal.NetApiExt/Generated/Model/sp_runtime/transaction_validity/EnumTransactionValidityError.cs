@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.sp_runtime.transaction_validity
+namespace Opal.NetApiExt.Generated.Model.sp_runtime.transaction_validity
 {
     
     
@@ -35,7 +35,7 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.sp_runtime.transaction_va
     /// <summary>
     /// >> 612 - Variant[sp_runtime.transaction_validity.TransactionValidityError]
     /// </summary>
-    public sealed class EnumTransactionValidityError : BaseEnumExt<TransactionValidityError, Substrate.Opal.NET.NetApiExt.Generated.Model.sp_runtime.transaction_validity.EnumInvalidTransaction, Substrate.Opal.NET.NetApiExt.Generated.Model.sp_runtime.transaction_validity.EnumUnknownTransaction>
+    public sealed class EnumTransactionValidityError : BaseEnumExt<TransactionValidityError, Opal.NetApiExt.Generated.Model.sp_runtime.transaction_validity.EnumInvalidTransaction, Opal.NetApiExt.Generated.Model.sp_runtime.transaction_validity.EnumUnknownTransaction>
     {
     }
 }

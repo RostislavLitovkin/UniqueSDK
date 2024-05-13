@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.xcm.v3
+namespace Opal.NetApiExt.Generated.Model.xcm.v3
 {
     
     
@@ -31,11 +31,11 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.xcm.v3
         /// <summary>
         /// >> name
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 Name { get; set; }
+        public Opal.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 Name { get; set; }
         /// <summary>
         /// >> module_name
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 ModuleName { get; set; }
+        public Opal.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 ModuleName { get; set; }
         /// <summary>
         /// >> major
         /// </summary>
@@ -74,9 +74,9 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.xcm.v3
             var start = p;
             Index = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Index.Decode(byteArray, ref p);
-            Name = new Substrate.Opal.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
+            Name = new Opal.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
             Name.Decode(byteArray, ref p);
-            ModuleName = new Substrate.Opal.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
+            ModuleName = new Opal.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
             ModuleName.Decode(byteArray, ref p);
             Major = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Major.Decode(byteArray, ref p);

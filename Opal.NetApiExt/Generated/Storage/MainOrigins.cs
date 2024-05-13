@@ -17,7 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Storage
+namespace Opal.NetApiExt.Generated.Storage
 {
     
     

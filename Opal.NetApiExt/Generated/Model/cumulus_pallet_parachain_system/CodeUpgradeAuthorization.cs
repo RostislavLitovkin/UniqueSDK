@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_parachain_system
+namespace Opal.NetApiExt.Generated.Model.cumulus_pallet_parachain_system
 {
     
     
@@ -27,7 +27,7 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_parachain_
         /// <summary>
         /// >> code_hash
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.H256 CodeHash { get; set; }
+        public Opal.NetApiExt.Generated.Model.primitive_types.H256 CodeHash { get; set; }
         /// <summary>
         /// >> check_version
         /// </summary>
@@ -52,7 +52,7 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_parachain_
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            CodeHash = new Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.H256();
+            CodeHash = new Opal.NetApiExt.Generated.Model.primitive_types.H256();
             CodeHash.Decode(byteArray, ref p);
             CheckVersion = new Substrate.NetApi.Model.Types.Primitive.Bool();
             CheckVersion.Decode(byteArray, ref p);

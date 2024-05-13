@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.extensions.check_mortality
+namespace Opal.NetApiExt.Generated.Model.frame_system.extensions.check_mortality
 {
     
     
@@ -27,7 +27,7 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.extensions.c
         /// <summary>
         /// >> value
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value { get; set; }
+        public Opal.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.extensions.c
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.Opal.NET.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra();
+            Value = new Opal.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

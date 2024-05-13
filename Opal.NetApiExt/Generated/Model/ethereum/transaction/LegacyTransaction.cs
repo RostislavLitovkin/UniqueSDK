@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction
+namespace Opal.NetApiExt.Generated.Model.ethereum.transaction
 {
     
     
@@ -27,23 +27,23 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction
         /// <summary>
         /// >> nonce
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256 Nonce { get; set; }
+        public Opal.NetApiExt.Generated.Model.primitive_types.U256 Nonce { get; set; }
         /// <summary>
         /// >> gas_price
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256 GasPrice { get; set; }
+        public Opal.NetApiExt.Generated.Model.primitive_types.U256 GasPrice { get; set; }
         /// <summary>
         /// >> gas_limit
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256 GasLimit { get; set; }
+        public Opal.NetApiExt.Generated.Model.primitive_types.U256 GasLimit { get; set; }
         /// <summary>
         /// >> action
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction.EnumTransactionAction Action { get; set; }
+        public Opal.NetApiExt.Generated.Model.ethereum.transaction.EnumTransactionAction Action { get; set; }
         /// <summary>
         /// >> value
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256 Value { get; set; }
+        public Opal.NetApiExt.Generated.Model.primitive_types.U256 Value { get; set; }
         /// <summary>
         /// >> input
         /// </summary>
@@ -51,7 +51,7 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction
         /// <summary>
         /// >> signature
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction.TransactionSignature Signature { get; set; }
+        public Opal.NetApiExt.Generated.Model.ethereum.transaction.TransactionSignature Signature { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -77,19 +77,19 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Nonce = new Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256();
+            Nonce = new Opal.NetApiExt.Generated.Model.primitive_types.U256();
             Nonce.Decode(byteArray, ref p);
-            GasPrice = new Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256();
+            GasPrice = new Opal.NetApiExt.Generated.Model.primitive_types.U256();
             GasPrice.Decode(byteArray, ref p);
-            GasLimit = new Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256();
+            GasLimit = new Opal.NetApiExt.Generated.Model.primitive_types.U256();
             GasLimit.Decode(byteArray, ref p);
-            Action = new Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction.EnumTransactionAction();
+            Action = new Opal.NetApiExt.Generated.Model.ethereum.transaction.EnumTransactionAction();
             Action.Decode(byteArray, ref p);
-            Value = new Substrate.Opal.NET.NetApiExt.Generated.Model.primitive_types.U256();
+            Value = new Opal.NetApiExt.Generated.Model.primitive_types.U256();
             Value.Decode(byteArray, ref p);
             Input = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>();
             Input.Decode(byteArray, ref p);
-            Signature = new Substrate.Opal.NET.NetApiExt.Generated.Model.ethereum.transaction.TransactionSignature();
+            Signature = new Opal.NetApiExt.Generated.Model.ethereum.transaction.TransactionSignature();
             Signature.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

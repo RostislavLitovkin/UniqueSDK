@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs
+namespace Opal.NetApiExt.Generated.Model.up_data_structs
 {
     
     

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.limits
+namespace Opal.NetApiExt.Generated.Model.frame_system.limits
 {
     
     
@@ -27,15 +27,15 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.limits
         /// <summary>
         /// >> base_block
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BaseBlock { get; set; }
+        public Opal.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BaseBlock { get; set; }
         /// <summary>
         /// >> max_block
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MaxBlock { get; set; }
+        public Opal.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MaxBlock { get; set; }
         /// <summary>
         /// >> per_class
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 PerClass { get; set; }
+        public Opal.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 PerClass { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -57,11 +57,11 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.limits
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            BaseBlock = new Substrate.Opal.NET.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            BaseBlock = new Opal.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             BaseBlock.Decode(byteArray, ref p);
-            MaxBlock = new Substrate.Opal.NET.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            MaxBlock = new Opal.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             MaxBlock.Decode(byteArray, ref p);
-            PerClass = new Substrate.Opal.NET.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2();
+            PerClass = new Opal.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2();
             PerClass.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

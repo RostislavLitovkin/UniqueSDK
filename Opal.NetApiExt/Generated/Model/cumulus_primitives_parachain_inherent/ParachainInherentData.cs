@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_primitives_parachain_inherent
+namespace Opal.NetApiExt.Generated.Model.cumulus_primitives_parachain_inherent
 {
     
     
@@ -27,19 +27,19 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_primitives_parach
         /// <summary>
         /// >> validation_data
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.polkadot_primitives.v6.PersistedValidationData ValidationData { get; set; }
+        public Opal.NetApiExt.Generated.Model.polkadot_primitives.v6.PersistedValidationData ValidationData { get; set; }
         /// <summary>
         /// >> relay_chain_state
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.sp_trie.storage_proof.StorageProof RelayChainState { get; set; }
+        public Opal.NetApiExt.Generated.Model.sp_trie.storage_proof.StorageProof RelayChainState { get; set; }
         /// <summary>
         /// >> downward_messages
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Opal.NET.NetApiExt.Generated.Model.polkadot_core_primitives.InboundDownwardMessage> DownwardMessages { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApiExt.Generated.Model.polkadot_core_primitives.InboundDownwardMessage> DownwardMessages { get; set; }
         /// <summary>
         /// >> horizontal_messages
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Types.Base.BTreeMapT1 HorizontalMessages { get; set; }
+        public Opal.NetApiExt.Generated.Types.Base.BTreeMapT1 HorizontalMessages { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -62,13 +62,13 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_primitives_parach
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ValidationData = new Substrate.Opal.NET.NetApiExt.Generated.Model.polkadot_primitives.v6.PersistedValidationData();
+            ValidationData = new Opal.NetApiExt.Generated.Model.polkadot_primitives.v6.PersistedValidationData();
             ValidationData.Decode(byteArray, ref p);
-            RelayChainState = new Substrate.Opal.NET.NetApiExt.Generated.Model.sp_trie.storage_proof.StorageProof();
+            RelayChainState = new Opal.NetApiExt.Generated.Model.sp_trie.storage_proof.StorageProof();
             RelayChainState.Decode(byteArray, ref p);
-            DownwardMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Opal.NET.NetApiExt.Generated.Model.polkadot_core_primitives.InboundDownwardMessage>();
+            DownwardMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApiExt.Generated.Model.polkadot_core_primitives.InboundDownwardMessage>();
             DownwardMessages.Decode(byteArray, ref p);
-            HorizontalMessages = new Substrate.Opal.NET.NetApiExt.Generated.Types.Base.BTreeMapT1();
+            HorizontalMessages = new Opal.NetApiExt.Generated.Types.Base.BTreeMapT1();
             HorizontalMessages.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

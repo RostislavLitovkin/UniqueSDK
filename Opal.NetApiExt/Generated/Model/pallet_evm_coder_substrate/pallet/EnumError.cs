@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_evm_coder_substrate.pallet
+namespace Opal.NetApiExt.Generated.Model.pallet_evm_coder_substrate.pallet
 {
     
     
