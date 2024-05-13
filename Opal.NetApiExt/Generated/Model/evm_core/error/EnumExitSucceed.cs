@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.evm_core.error
+namespace Opal.NetApiExt.Generated.Model.evm_core.error
 {
     
     

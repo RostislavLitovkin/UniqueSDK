@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs
+namespace Opal.NetApiExt.Generated.Model.up_data_structs
 {
     
     
@@ -27,11 +27,11 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs
         /// <summary>
         /// >> token
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs.TokenId Token { get; set; }
+        public Opal.NetApiExt.Generated.Model.up_data_structs.TokenId Token { get; set; }
         /// <summary>
         /// >> collection
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs.CollectionId Collection { get; set; }
+        public Opal.NetApiExt.Generated.Model.up_data_structs.CollectionId Collection { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -52,9 +52,9 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Token = new Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs.TokenId();
+            Token = new Opal.NetApiExt.Generated.Model.up_data_structs.TokenId();
             Token.Decode(byteArray, ref p);
-            Collection = new Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs.CollectionId();
+            Collection = new Opal.NetApiExt.Generated.Model.up_data_structs.CollectionId();
             Collection.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

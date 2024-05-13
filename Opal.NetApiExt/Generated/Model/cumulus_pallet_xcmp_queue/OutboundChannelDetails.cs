@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue
+namespace Opal.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue
 {
     
     
@@ -27,11 +27,11 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue
         /// <summary>
         /// >> recipient
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.polkadot_parachain_primitives.primitives.Id Recipient { get; set; }
+        public Opal.NetApiExt.Generated.Model.polkadot_parachain_primitives.primitives.Id Recipient { get; set; }
         /// <summary>
         /// >> state
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue.EnumOutboundState State { get; set; }
+        public Opal.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue.EnumOutboundState State { get; set; }
         /// <summary>
         /// >> signals_exist
         /// </summary>
@@ -67,9 +67,9 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Recipient = new Substrate.Opal.NET.NetApiExt.Generated.Model.polkadot_parachain_primitives.primitives.Id();
+            Recipient = new Opal.NetApiExt.Generated.Model.polkadot_parachain_primitives.primitives.Id();
             Recipient.Decode(byteArray, ref p);
-            State = new Substrate.Opal.NET.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue.EnumOutboundState();
+            State = new Opal.NetApiExt.Generated.Model.cumulus_pallet_xcmp_queue.EnumOutboundState();
             State.Decode(byteArray, ref p);
             SignalsExist = new Substrate.NetApi.Model.Types.Primitive.Bool();
             SignalsExist.Decode(byteArray, ref p);

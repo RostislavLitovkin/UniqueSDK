@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.extensions.check_tx_version
+namespace Opal.NetApiExt.Generated.Model.frame_system.extensions.check_tx_version
 {
     
     

@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Opal.RestService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:61752/swagger",
+      "applicationUrl": "https://localhost:61751;http://localhost:61752",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

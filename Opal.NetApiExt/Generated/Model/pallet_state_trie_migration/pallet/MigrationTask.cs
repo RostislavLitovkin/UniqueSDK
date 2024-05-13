@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet
+namespace Opal.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet
 {
     
     
@@ -27,11 +27,11 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migrati
         /// <summary>
         /// >> progress_top
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress ProgressTop { get; set; }
+        public Opal.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress ProgressTop { get; set; }
         /// <summary>
         /// >> progress_child
         /// </summary>
-        public Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress ProgressChild { get; set; }
+        public Opal.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress ProgressChild { get; set; }
         /// <summary>
         /// >> size
         /// </summary>
@@ -67,9 +67,9 @@ namespace Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migrati
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ProgressTop = new Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress();
+            ProgressTop = new Opal.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress();
             ProgressTop.Decode(byteArray, ref p);
-            ProgressChild = new Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress();
+            ProgressChild = new Opal.NetApiExt.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress();
             ProgressChild.Decode(byteArray, ref p);
             Size = new Substrate.NetApi.Model.Types.Primitive.U32();
             Size.Decode(byteArray, ref p);

@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Opal.NET.NetApiExt.Generated.Model.frame_support.traits.tokens.misc
+namespace Opal.NetApiExt.Generated.Model.frame_support.traits.tokens.misc
 {
     
     
