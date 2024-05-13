@@ -7,9 +7,6 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
-using Substrate.Opal.NET.NetApiExt.Generated;
-using Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system;
-using Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs;
 
 namespace UniqueSDK
 {
@@ -69,12 +66,12 @@ namespace UniqueSDK
         /// <param name="cancellationToken"></param>
         /// <returns>Collection Id of the newly created Collection</returns>
         public static async Task<uint?> SignAndSubmitCreateCollectionExtrinsicAsync(
-            this SubstrateClientExt substrateClient,
+            this Substrate.Opal.NET.NetApiExt.Generated.SubstrateClientExt substrateClient,
             Account account,
             UniqueCollectionRest collection,
             Action<string, ExtrinsicStatus>? customCallback = null,
             uint? nonce = null,
-            NetworkEnum? network = null,
+            NetworkEnum? network = NetworkEnum.Opal,
             UseEnum use = UseEnum.Build,
             bool withFee = false,
             bool verify = false,
@@ -84,9 +81,6 @@ namespace UniqueSDK
             CancellationToken cancellationToken = default
         )
         {
-            // If network is not provided, use the default one
-            network ??= SdkConfig.UseDefaultNetwork;
-
             // If nonce is not provided, get a new one
             nonce ??= await substrateClient.System.AccountNextIndexAsync(account.Value, cancellationToken);
 
@@ -125,7 +119,7 @@ namespace UniqueSDK
         /// <param name="cancellationToken"></param>
         /// <returns>Collection Id of the newly created Collection</returns>
         public static async Task<uint?> SignAndSubmitCreateCollectionExtrinsicAsync(
-            this SubstrateClientExt substrateClient,
+            this Substrate.Opal.NET.NetApiExt.Generated.SubstrateClientExt substrateClient,
             Account account,
             RestResponse response,
             Action<string, ExtrinsicStatus>? customCallback = null,
@@ -155,7 +149,7 @@ namespace UniqueSDK
 
                     case ExtrinsicState.Finalized:
 
-                        IEnumerable<EventRecord> allExtrinsicEvents;
+                        IEnumerable<Substrate.Opal.NET.NetApiExt.Generated.Model.frame_system.EventRecord> allExtrinsicEvents;
 
                         try
                         {
@@ -177,9 +171,175 @@ namespace UniqueSDK
 
                                 if (commonEvent.Value == Substrate.Opal.NET.NetApiExt.Generated.Model.pallet_common.pallet.Event.CollectionCreated)
                                 {
-                                    var createdCollectionEvent = (BaseTuple<CollectionId, U8, Substrate.Opal.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>)commonEvent.Value2;
+                                    var createdCollectionEvent = (BaseTuple<
+                                        Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs.CollectionId,
+                                        U8,
+                                        Substrate.Opal.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32
+                                    >)commonEvent.Value2;
 
-                                    collectionIdTask.TrySetResult(((CollectionId)createdCollectionEvent.Value[0]).Value);
+                                    collectionIdTask.TrySetResult(((Substrate.Opal.NET.NetApiExt.Generated.Model.up_data_structs.CollectionId)createdCollectionEvent.Value[0]).Value);
+
+                                    return;
+                                }
+                            }
+                        }
+
+                        break;
+
+                }
+            };
+#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
+
+            await substrateClient.Author.SubmitAndWatchExtrinsicAsync(
+                callback,
+                Utils.Bytes2HexString(unCheckedExtrinsic.Encode()),
+                cancellationToken
+            );
+
+            var timeoutTask = Task.Delay(finalityTimeout, cancellationToken);
+
+            if (await Task.WhenAny(collectionIdTask.Task, timeoutTask) == timeoutTask)
+            {
+                // If timeouted, set the result to null
+                collectionIdTask.TrySetResult(null);
+            }
+
+            // Return the resulting Collection Id
+            return await collectionIdTask.Task;
+        }
+
+        /// <summary>
+        /// Constructs the Unique.createCollectionEx extrinsic, signs it, submits it to the chain,
+        /// listens to on-chain events and filters the events for Common.CollectionCreated
+        /// to get the CollectionId of the newly created Collection.
+        /// </summary>
+        /// <param name="substrateClient"></param>
+        /// <param name="account"></param>
+        /// <param name="collection"></param>
+        /// <param name="customCallback"></param>
+        /// <param name="nonce"></param>
+        /// <param name="network">Network you want to use</param>
+        /// <param name="use"></param>
+        /// <param name="withFee"></param>
+        /// <param name="verify"></param>
+        /// <param name="callbackUrl"></param>
+        /// <param name="signed"></param>
+        /// <param name="finalityTimeout">The maximum amount of time to wait for the finality. Defaultly wait maximum 60 seconds.</param> 
+        /// <param name="cancellationToken"></param>
+        /// <returns>Collection Id of the newly created Collection</returns>
+        public static async Task<uint?> SignAndSubmitCreateCollectionExtrinsicAsync(
+            this Substrate.Unique.NET.NetApiExt.Generated.SubstrateClientExt substrateClient,
+            Account account,
+            UniqueCollectionRest collection,
+            Action<string, ExtrinsicStatus>? customCallback = null,
+            uint? nonce = null,
+            NetworkEnum? network = NetworkEnum.Unique,
+            UseEnum use = UseEnum.Build,
+            bool withFee = false,
+            bool verify = false,
+            string? callbackUrl = null,
+            bool signed = true,
+            int finalityTimeout = 60_000,
+            CancellationToken cancellationToken = default
+        )
+        {
+            // If nonce is not provided, get a new one
+            nonce ??= await substrateClient.System.AccountNextIndexAsync(account.Value, cancellationToken);
+
+            var response = await CollectionModel.CreateCollectionRestAsync(
+                collection,
+                nonce.Value,
+                network,
+                use,
+                withFee,
+                verify,
+                callbackUrl,
+                cancellationToken
+            );
+
+            return await substrateClient.SignAndSubmitCreateCollectionExtrinsicAsync(
+                account,
+                response,
+                customCallback,
+                signed,
+                finalityTimeout,
+                cancellationToken
+            );
+        }
+
+        /// <summary>
+        /// Constructs the Unique.createCollectionEx extrinsic, signs it, submits it to the chain,
+        /// listens to on-chain events and filters the events for Common.CollectionCreated
+        /// to get the CollectionId of the newly created Collection.
+        /// </summary>
+        /// <param name="substrateClient"></param>
+        /// <param name="account"></param>
+        /// <param name="response"></param>
+        /// <param name="customCallback"></param>
+        /// <param name="signed"></param>
+        /// <param name="finalityTimeout">The maximum amount of time to wait for the finality. Defaultly wait maximum 60 seconds.</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Collection Id of the newly created Collection</returns>
+        public static async Task<uint?> SignAndSubmitCreateCollectionExtrinsicAsync(
+            this Substrate.Unique.NET.NetApiExt.Generated.SubstrateClientExt substrateClient,
+            Account account,
+            RestResponse response,
+            Action<string, ExtrinsicStatus>? customCallback = null,
+            bool signed = true,
+            int finalityTimeout = 60_000,
+            CancellationToken cancellationToken = default
+        )
+        {
+            UnCheckedExtrinsic unCheckedExtrinsic = await response.SignerPayloadJSON.ToExtrinsicAsync(account, signed);
+
+            var collectionIdTask = new TaskCompletionSource<uint?>();
+
+#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
+            Action<string, ExtrinsicStatus> callback = async (string id, ExtrinsicStatus status) =>
+            {
+                customCallback?.Invoke(id, status);
+
+                switch (status.ExtrinsicState)
+                {
+                    case ExtrinsicState.Retracted:
+                    case ExtrinsicState.FinalityTimeout:
+                    case ExtrinsicState.Dropped:
+                    case ExtrinsicState.Invalid:
+                    case ExtrinsicState.Usurped:
+                        collectionIdTask.TrySetResult(null);
+                        break;
+
+                    case ExtrinsicState.Finalized:
+
+                        IEnumerable<Substrate.Unique.NET.NetApiExt.Generated.Model.frame_system.EventRecord> allExtrinsicEvents;
+
+                        try
+                        {
+                            allExtrinsicEvents = await EventsModel.GetExtrinsicEventsAsync(substrateClient, status.Hash, unCheckedExtrinsic);
+                        }
+                        catch
+                        {
+                            collectionIdTask.TrySetResult(null);
+
+                            return;
+                        }
+
+                        foreach (var e in allExtrinsicEvents)
+                        {
+                            // Filter only Common.CollectionCreated events
+                            if (e.Event.Value == Substrate.Unique.NET.NetApiExt.Generated.Model.unique_runtime.RuntimeEvent.Common)
+                            {
+                                var commonEvent = (Substrate.Unique.NET.NetApiExt.Generated.Model.pallet_common.pallet.EnumEvent)e.Event.Value2;
+
+                                if (commonEvent.Value == Substrate.Unique.NET.NetApiExt.Generated.Model.pallet_common.pallet.Event.CollectionCreated)
+                                {
+                                    var createdCollectionEvent = (BaseTuple<
+                                        Substrate.Unique.NET.NetApiExt.Generated.Model.up_data_structs.CollectionId,
+                                        U8,
+                                        Substrate.Unique.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32
+                                    >)commonEvent.Value2;
+
+                                    collectionIdTask.TrySetResult(((Substrate.Unique.NET.NetApiExt.Generated.Model.up_data_structs.CollectionId)createdCollectionEvent.Value[0]).Value);
 
                                     return;
                                 }

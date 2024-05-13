@@ -3,6 +3,21 @@ Simple to use nuget package (standard for C# packages) that abstracts the use of
 
 The ideal goal of this abstraction is to make it understandable to non-web3 developers.
 
+# Instalation
+
+Just add the following NuGet package to your project: https://www.nuget.org/packages/uniquesdk
+
+# SDK config
+
+SdkConfig takes care of the default values used. Its point is to simplify the use.
+
+For this case, instead of specifying the netword to use every single time, you can just configure it once and forget about it for the rest of your life.
+
+```
+// Change the sdk configuration to use Opal testnet by default.
+SdkConfig.UseDefaultNetwork = NetworkEnum.Opal;
+```
+
 # Create a new account
 ```C#
 // Generate new mnemonics
@@ -36,14 +51,15 @@ var account = firstWallet.Account;
 # Connect to a Substrate node
 ```C#
 // Connect to a Substrate node
-var client = new SubstrateClientExt(
-        new System.Uri(Constants.UNIQUE_NODE_URL),
+var client = new Substrate.Opal.NET.NetApiExt.Generated.SubstrateClientExt(
+        new System.Uri(Constants.OPAL_NODE_URL),
         ChargeTransactionPayment.Default());
 
 await client.ConnectAsync();
 ```
 
-- Feel free to change the `Constants.UNIQUE_NODE_URL` for any other websocket node URL.
+- Feel free to change the `Constants.OPAL_NODE_URL` for any other websocket node URL.
+- You can also use the provided websocket URLs in the Constants class, like `Constants.UNIQUE_NODE_URL`
 
 # Query Free Balance Example
 ```C#

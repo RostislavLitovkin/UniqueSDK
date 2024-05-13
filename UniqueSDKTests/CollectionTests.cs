@@ -17,7 +17,7 @@ public class CollectionTests
     [SetUp]
     public async Task SetupAsync()
     {
-        // SdkConfig
+        // Change the sdk configuration to use Opal testnet by default.
         SdkConfig.UseDefaultNetwork = NetworkEnum.Opal;
 
         // Account creation
